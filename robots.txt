@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /data/
+Disallow: /uploads/resumes/
+
+Sitemap: https://metrovaletparking.com/sitemap.php

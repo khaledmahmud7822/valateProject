@@ -1,0 +1,10 @@
+# data/ — never served over HTTP.
+# The SQLite database, rate-limit counters, and any other runtime data live here.
+
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  # Apache 2.2 fallback
+  Deny from all
+</IfModule>

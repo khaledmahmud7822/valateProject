@@ -1,0 +1,44 @@
+# Metro Valet Parking — app root .htaccess
+
+# ---------------------------------------------------------------------------
+# Force HTTPS (recommended on Hostinger once SSL is active).
+# Uncomment the two lines below AFTER your domain has a valid certificate.
+# ---------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+
+# ---------------------------------------------------------------------------
+# Hide install.php after installation.
+# Uncomment the block below once install.php has been deleted or you want it
+# blocked even if the file is accidentally re-uploaded.
+# ---------------------------------------------------------------------------
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteRule ^install\.php$ - [F,L]
+# </IfModule>
+
+# Never serve database files, backups, or config fragments directly.
+<FilesMatch "\.(sqlite|sqlite3|db|db3|env|ini|log|bak|sql)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Block common sensitive filenames.
+<FilesMatch "^(composer\.(json|lock)|\.gitignore|\.htpasswd)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Hide directory listings everywhere.
+Options -Indexes

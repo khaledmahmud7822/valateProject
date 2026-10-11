@@ -1,0 +1,10 @@
+# Runtime data — never commit (see README "Security notes")
+data/*.sqlite
+data/*.sqlite-*
+data/ratelimit/
+data/backups/
+uploads/*
+!uploads/.htaccess
+
+# Image-generation tool metadata (signed URLs) — not site assets
+assets/img/media-generation-*.json
